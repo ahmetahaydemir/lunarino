@@ -7,7 +7,7 @@ export default function Ranking(props: any) {
 
     return (
         <Link
-            key={props.name}
+            key={props.id}
             href={props.href}
             className="ranking flex shadow-md h-[48px] items-center justify-center gap-2 rounded-md font-medium hover:border-indigo-300"
         >
