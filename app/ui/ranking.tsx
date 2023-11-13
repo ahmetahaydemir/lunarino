@@ -9,10 +9,13 @@ export default function Ranking(props: any) {
         <Link
             key={props.name}
             href={props.href}
-            className="flex shadow-md h-[48px] grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600"
+            className="ranking flex shadow-md h-[48px] items-center justify-center gap-2 rounded-md font-medium hover:border-indigo-300"
         >
-            <ChevronDoubleRightIcon className="w-6 fill-slate-400" />
-            <p className="text-indigo-500">{props.name}</p>
+            <div className='flex w-[54px] h-[54px] shadow-md bg-blue-200 text-black justify-center text-xl rounded-2xl'>
+                <b className='self-center'>{props.id}</b>
+            </div>
+            <ChevronDoubleRightIcon className="w-8 fill-blue-200" />
+            <p className="w-full text-slate-100 text-lg">{props.name}</p>
         </Link>
     )
 }

@@ -37,6 +37,7 @@ export default function Global() {
             {globalRanking.map((globalRank) => {
                 return (
                     <Ranking key={globalRank.id}
+                        id={globalRank.id}
                         name={globalRank.name}
                         href={globalRank.href} >
                     </Ranking>

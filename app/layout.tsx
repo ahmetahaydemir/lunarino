@@ -18,11 +18,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${GeistSans.className} antialiased`}>
-        <Navbar></Navbar>
-        <hr className='border-dashed border-indigo-100' />
-        <div className='h-screen w-screen'>
-          {children}
+      <body className={`${GeistSans.className} antialiased flex justify-center`}>
+        <div className='w-screen lg:w-256 h-screen origin-center'>
+          <Navbar></Navbar>
+          <hr className='border-dashed border-indigo-100' />
+          <div className='h-fit w-full'>
+            {children}
+          </div>
         </div>
       </body>
     </html>
