@@ -17,11 +17,61 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
+  background-color: black;
+}
+
+.bg-container {
+  background-color: black;
+  position: relative;
+  pointer-events: none;
+}
+
+.bg-overlay {
+  pointer-events: none;
   background-image: linear-gradient(to bottom,
       transparent,
-      rgba(255, 255, 255, 0.25)), url("/bg-darkpurple.png");
+      rgba(0, 0, 0, 0.5));
+  position: fixed;
+  overflow: auto;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.bg {
+  pointer-events: none;
+  position: fixed;
+  overflow: auto;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  z-index: -1;
+}
+
+.bg.active {
+  transition: opacity 0.6s ease-in-out;
+  opacity: 1;
   background-size: contain;
+}
+
+.img-0 {
+  background: url('/bg-darkpurple.png');
+}
+
+.img-1 {
+  background: url('/bg-darkgreen.png');
+}
+
+.img-2 {
+  background: url('/bg-darkblue.png');
+}
+
+.img-3 {
+  background: url('/bg-greypurple.jpg');
+}
+
+.img-4 {
+  background: url('/bg-green.png');
 }
 
 input::selection {

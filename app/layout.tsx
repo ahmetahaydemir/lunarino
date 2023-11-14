@@ -19,6 +19,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${GeistSans.className} antialiased flex justify-center`}>
+        <div id='bg-container' className='bg-container'>
+          <div className='w-screen h-screen bg active img-0' />
+          <div className='w-screen h-screen bg img-1' />
+          <div className='w-screen h-screen bg img-2' />
+          <div className='w-screen h-screen bg img-3' />
+          <div className='w-screen h-screen bg img-4' />
+        </div>
+        <div className='w-screen h-screen bg-overlay' />
         <div className='w-screen lg:w-256 h-screen origin-center'>
           <Navbar></Navbar>
           <hr className='border-dashed border-indigo-100' />
