@@ -1,8 +1,7 @@
 'use client'
-import { FcGoogle, FcReddit } from "react-icons/fc";
-import { FaGithub, FaGoogle, FaTwitter, FaTwitch, FaReddit, FaDiscord } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
+import { FaGithub, FaTwitter, FaTwitch, FaReddit, FaDiscord } from "react-icons/fa";
 import { signIn } from "next-auth/react"
-import Image from "next/image";
 
 export default function Login() {
     console.log("Page Route : Login");
