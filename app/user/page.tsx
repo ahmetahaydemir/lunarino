@@ -7,7 +7,7 @@ export default function User() {
     console.log("Page Route : User");
     const { data: session, status } = useSession()
 
-    return <div className="h-128 w-screen flex flex-col gap-4 items-center justify-center text-1xl text-gray-300">
+    return <div className="h-128 w-full flex flex-col gap-4 items-center justify-center text-1xl text-gray-300">
         <h2 className="text-2xl text-white">User Detail Page</h2>
         <hr ></hr>
         <b>
