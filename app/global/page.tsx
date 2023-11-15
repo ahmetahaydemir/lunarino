@@ -83,7 +83,7 @@ export default function Global() {
     console.log("Page Route : Global");
 
     return (
-        <div className="flex flex-col p-4 gap-4">
+        <div id='global-container' className="flex flex-col p-4 gap-4">
             {globalRanking.map((globalRank) => {
                 return (
                     <Ranking key={globalRank.id}
@@ -93,6 +93,7 @@ export default function Global() {
                     </Ranking>
                 );
             })}
+            <hr />
         </div>
     )
 }

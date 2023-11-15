@@ -30,7 +30,7 @@ body {
   pointer-events: none;
   background-image: linear-gradient(to bottom,
       transparent,
-      rgba(0, 0, 0, 0.5));
+      rgba(0, 0, 0, 0.4));
   position: fixed;
   overflow: auto;
   top: 0;
