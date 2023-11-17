@@ -34,6 +34,6 @@ export default function User() {
                 <b>No image in the callback</b>
         }
         <hr ></hr>
-        <button className="w-32 h-12 text-lg text-white bg-gray-500 drop-shadow-lg rounded-lg" onClick={() => signOut({ callbackUrl: 'http://localhost:3000/login' })}>Sign out</button>
+        <button className="w-32 h-12 text-lg text-white bg-gray-500 drop-shadow-lg rounded-lg" onClick={() => signOut({ callbackUrl: '/login' })}>Sign out</button>
     </div>
 }
