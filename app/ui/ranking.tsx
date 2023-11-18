@@ -1,6 +1,6 @@
 'use client'
 
-import { ChevronDoubleRightIcon } from '@heroicons/react/24/solid'
+import { ChevronDoubleRightIcon, EllipsisHorizontalIcon } from '@heroicons/react/24/solid'
 import Link from 'next/link'
 
 import { useDrag, useDrop } from 'react-dnd'
@@ -89,7 +89,7 @@ export const Ranking: FC<RankingProps> = ({ id, name, href, index, moveRanking }
         },
     })
     //
-    const [{ isDragging }, drag] = useDrag({
+    const [{ isDragging }, drag, preview] = useDrag({
         type: ItemTypes.RANKING,
         item: () => {
             return { id, index }
@@ -99,20 +99,22 @@ export const Ranking: FC<RankingProps> = ({ id, name, href, index, moveRanking }
         }),
     })
     //
+    preview(null);
     drag(drop(ref))
     //
     return (
         <div ref={ref}
             data-handler-id={handlerId}
-            className={isDragging ? 'opacity-0 w-full' : 'opacity-100 w-full'}
+            className={(isDragging ? 'opacity-10 w-11/12 duration-100 ease-out' : 'opacity-100 w-full duration-200 ease-in-out') + 'transition-all flex justify-center items-center'}
         >
+            <EllipsisHorizontalIcon className={(isDragging ? 'visible' : 'invisible') + ' w-8 h-8 fill-white absolute left-0 pointer-events-none'}></EllipsisHorizontalIcon>
             <Link
                 key={id}
                 href={href}
-                className="ranking flex shadow-md h-[48px] items-center justify-center gap-2 rounded-md font-medium hover:border-indigo-300"
+                className="ranking flex w-11/12 h-[48px] items-center justify-center gap-2 rounded-md font-medium"
             >
-                <div className='flex w-[54px] h-[54px] shadow-md bg-blue-200 text-black justify-center text-xl rounded-2xl'>
-                    <b className='self-center'>{id}</b>
+                <div className='flex w-[64px] h-[54px] bg-blue-200 text-black justify-center text-xl rounded-2xl'>
+                    <b className='self-center'>{index + 1}</b>
                 </div>
                 <ChevronDoubleRightIcon className="w-8 fill-blue-200" />
                 <p className="w-full text-slate-100 text-lg">{name}</p>

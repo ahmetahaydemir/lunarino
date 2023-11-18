@@ -52,6 +52,26 @@ export const Container: FC<ContainerProps> = (mobileCheck) => {
             id: 6,
             name: "Dark Souls",
             href: "/detail"
+        },
+        {
+            id: 7,
+            name: "For the King",
+            href: "/detail"
+        },
+        {
+            id: 8,
+            name: "Factorio",
+            href: "/detail"
+        },
+        {
+            id: 9,
+            name: "Disco Elysium",
+            href: "/detail"
+        },
+        {
+            id: 10,
+            name: "Dyson Sphere Program",
+            href: "/detail"
         }
     ])
 
@@ -86,13 +106,13 @@ export const Container: FC<ContainerProps> = (mobileCheck) => {
     if (!initialToken) {
         setTimeout(() => {
             moveRanking(1, 1);
-        }, 400);
+        }, 250);
         initialToken = true;
     }
 
     return (
         <>
-            <div className='w-full h-fit flex flex-col p-4 gap-4 items-center'>
+            <div className='w-full h-fit flex flex-col pt-4 gap-4 items-center'>
                 <DndProvider backend={mobileCheck.mobile ? TouchBackend : HTML5Backend}>
                     {rankings.map((rank, i) => renderRanking(rank, i))}
                 </DndProvider>
