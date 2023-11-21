@@ -11,20 +11,18 @@ export default function Profile() {
     switch (status) {
         case "loading":
             return (
-                <FaUserPlus className="h-6 w-6 fill-gray-300/25" />
+                <FaUserPlus className="h-6 w-6 fill-blue-400/25" />
             );
         case "authenticated":
             return (
-                <Link className={`${pathname === '/user' ? 'stroke-gray-400 stroke-1.5' : ''}`}
-                    href={'/user'}>
-                    <FaUser className="h-6 w-6 fill-gray-100" />
+                <Link href={'/user'}>
+                    <FaUser className={`${pathname === '/user' ? 'fill-blue-400' : ' fill-blue-100'}` + " h-6 w-6"} />
                 </Link>
             );
         case "unauthenticated":
             return (
-                <Link className={`${pathname === '/login' ? 'stroke-gray-400 stroke-1.5' : ''}`}
-                    href={'/login'}>
-                    <FaUserPlus className="h-6 w-6 fill-gray-100" />
+                <Link href={'/login'}>
+                    <FaUserPlus className={`${pathname === '/login' ? 'fill-blue-400' : ' fill-blue-100'}` + " h-6 w-6"} />
                 </Link>
             );
     }
