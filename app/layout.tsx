@@ -1,17 +1,30 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import { GeistSans } from "geist/font/sans";
 import './globals.css'
 import Navbar from './ui/navbar';
 import AuthProvider from './context/AuthProvider';
 import Topbar from './ui/topbar';
-
-const inter = Inter({ subsets: ['latin'] })
+import { URL } from 'url';
 
 export const metadata: Metadata = {
   title: 'Lunarino | Opinionated Ranking Board',
-  description: 'Lunarino allows users to create rankings based on actual rankings rather than arbitrary scores. At the end of the day, one is better than the other.',
+  description: "Lunarino allows users to create rankings based on their actual rankings rather than arbitrary scoring methods. At the end of the day, one is better than the other. Let's explore our preferences together.",
+  manifest: '/site.webmanifest',
+  metadataBase: undefined,
+  openGraph: {
+    type: "website",
+    url: "https://lunarino.vercel.app",
+    title: "Lunarino | Opinionated Ranking Board",
+    description: "At the end of the day, we prefer one over the other. Let's discover our preferences without arbitrary scoring methods.",
+    siteName: "Lunarino",
+    images: [{
+      url: "https://lunarino.vercel.app/_next/image?url=%2Flogo%2Flogo-square.png&w=256&q=75",
+    }],
+  },
+  icons: [{ rel: "icon", type: "image/png", sizes: "32x32", url: "/favicon-32x32.png" },
+  { rel: "apple-touch-icon", sizes: "180x180", url: "/apple-touch-icon.png" }]
 }
+
 
 export default function RootLayout({
   children,

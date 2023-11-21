@@ -64,23 +64,23 @@ body {
 }
 
 .img-0 {
-  background: url('/bg-darkpurple.png');
+  background: url('/image/bg-darkpurple.png');
 }
 
 .img-1 {
-  background: url('/bg-darkgreen.png');
+  background: url('/image/bg-darkgreen.png');
 }
 
 .img-2 {
-  background: url('/bg-darkblue.png');
+  background: url('/image/bg-darkblue.png');
 }
 
 .img-3 {
-  background: url('/bg-greypurple.jpg');
+  background: url('/image/bg-greypurple.jpg');
 }
 
 .img-4 {
-  background: url('/bg-green.png');
+  background: url('/image/bg-green.png');
 }
 
 input::selection {
