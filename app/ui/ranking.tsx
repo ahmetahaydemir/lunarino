@@ -11,8 +11,8 @@ import { CSS } from '@dnd-kit/utilities';
 export interface RankingProp {
     index: any
     id: any
-    name: string
-    href: string
+    name: string | undefined
+    href: string | undefined
     active: boolean
 }
 export interface RankingPropNoIndex {
@@ -46,15 +46,15 @@ export default function SortableRanking(props: RankingProp) {
             style={style}
             {...attributes}
             {...listeners}
-            className={(props.active ? 'blur-sm' : '') + ' w-full flex justify-center items-center'}
+            className={(props.active ? 'blur-sm ' : '') + 'w-full flex justify-center items-center'}
         >
-            <PiCaretUpDownBold className={(props.active ? 'visible' : 'invisible') + ' w-6 h-6 fill-white/25 absolute left-0 pointer-events-none'}></PiCaretUpDownBold>
             <Link
-                href={props.href}
+                href={props.href || "/"}
                 className={(props.active ? 'opacity-25 ' : 'opacity-100') + " ranking flex w-11/12 h-[48px] items-center justify-center gap-2 rounded-md font-medium"}
             >
-                <div className={((props.index === "?" || props.active) ? "bg-blue-300 " : "bg-blue-200 ") + ' flex w-[64px] h-[54px] text-black justify-center text-xl rounded-2xl'}>
-                    <b className='self-center'>{props.index}</b>
+                <div className={((props.index === "?" || props.active) ? "bg-blue-400 shadow-lg " : "bg-blue-200 ") + ' flex w-[64px] h-[54px] text-black justify-center text-xl rounded-2xl'}>
+                    <b className={props.index === "?" ? 'self-center ' : 'self-center'}>{props.index}</b>
+                    <PiCaretUpDownBold className={(props.index === "?" ? 'visible  -z-10 ' : 'invisible') + ' w-20 h-20 fill-blue-500 absolute self-center pointer-events-none'}></PiCaretUpDownBold>
                 </div>
                 <FaAngleRight className="w-6 h-6 fill-white/25" />
                 <p className="w-full text-slate-100 text-lg">{props.name}</p>

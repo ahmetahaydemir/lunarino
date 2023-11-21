@@ -115,8 +115,7 @@ export default function SortableContainer(props: SortableContainerProp) {
                     ></SortableRanking>))}
                 </SortableContext>
 
-                <DragOverlay className=''
-                    adjustScale={false}
+                <DragOverlay
                     dropAnimation={{
                         duration: 200,
                         easing: 'cubic-bezier(.64,.72,.42,1.21)'
@@ -126,6 +125,7 @@ export default function SortableContainer(props: SortableContainerProp) {
                         id={activeId}
                         name={activeElement?.name}
                         href={activeElement?.href}
+                        active={false}
                     ></SortableRanking>) : null}
                 </DragOverlay>
 
