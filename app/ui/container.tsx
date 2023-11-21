@@ -99,7 +99,7 @@ export default function SortableContainer(props: SortableContainerProp) {
     );
     //
     return (
-        <ul className='w-full h-fit flex flex-col pt-4 gap-4 items-center'>
+        <ul className='w-full h-fit flex flex-col gap-4 items-center'>
             <DndContext sensors={sensors} collisionDetection={closestCenter} onDragStart={handleDragStart} onDragEnd={handleDragEnd}
 
             >

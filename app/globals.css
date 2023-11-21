@@ -2,20 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 20, 0, 0;
-    --background-end-rgb: 0, 20, 20;
-  }
-}
-
 html {
   margin: 0;
   height: 100%;
@@ -111,11 +97,11 @@ input::selection {
 }
 
 .floating-right {
-  animation: floatingRight 6s ease-in-out infinite !important;
+  animation: floatingRight 7s ease-in-out infinite !important;
 }
 
 .floating-both {
-  animation: floatingBoth 6s ease-in-out infinite !important;
+  animation: floatingBoth 8s ease-in-out infinite !important;
 }
 
 

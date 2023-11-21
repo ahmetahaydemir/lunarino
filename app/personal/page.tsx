@@ -2,8 +2,8 @@
 
 import SortableContainer from "../ui/container";
 
-export default function Global() {
-    console.log("Page Route : Global");
+export default function Personal() {
+    console.log("Page Route : Personal");
     //
     let check = false;
     if (typeof window !== "undefined") {

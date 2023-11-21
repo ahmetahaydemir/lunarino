@@ -18,7 +18,7 @@ function ChangeCategory(catName: string, catIndex: number) {
     }
 }
 
-export default function Category(props: any) {
+export default function CategoryContainer(props: any) {
 
     return (
         <button
