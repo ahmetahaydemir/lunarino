@@ -1,17 +1,17 @@
 'use client'
 
 import Link from 'next/link'
-import { HomeIcon } from '@heroicons/react/24/solid'
+import { FaHome } from "react-icons/fa";
 import { usePathname } from 'next/navigation'
 import Profile from './profile'
 
 export default function Navbar() {
     const pathname = usePathname();
     return (
-        <div className='w-full flex h-16 pl-4 pr-4 gap-4 items-center justify-evenly'>
+        <div className='w-full absolute bottom-0 flex h-20 pl-4 pr-4 gap-4 items-center justify-evenly bg-black/50 rounded-t-xl'>
             <Link className={`${pathname === '/' ? 'stroke-gray-400' : ''}`}
                 href={'/'}>
-                <HomeIcon className="h-6 w-6 fill-gray-100" />
+                <FaHome className="h-6 w-6 fill-gray-100" />
             </Link>
             <Link href={'/global'}>
                 <input

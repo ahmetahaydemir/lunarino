@@ -30,12 +30,9 @@ export default function RootLayout({
           </div>
           <div className='w-screen h-screen bg-overlay' />
           <div className='w-screen lg:w-256 h-screen origin-center'>
-            <Navbar></Navbar>
-            <hr className='border-dashed border-indigo-100' />
-            <div className='h-fit w-full'>
-              {children}
-            </div>
+            {children}
           </div>
+          <Navbar></Navbar>
         </AuthProvider>
       </body>
     </html>

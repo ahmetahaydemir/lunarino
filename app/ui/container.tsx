@@ -1,27 +1,33 @@
 'use client'
 
-import { DndProvider, useDrag } from 'react-dnd'
-import { HTML5Backend } from 'react-dnd-html5-backend'
-import { TouchBackend } from 'react-dnd-touch-backend'
-import type { FC } from 'react'
-import { useCallback, useState } from 'react'
-import update from 'immutability-helper';
-import { Ranking } from './ranking'
+import React, { useState } from 'react';
+import {
+    DndContext,
+    closestCenter,
+    KeyboardSensor,
+    TouchSensor,
+    MouseSensor,
+    useSensor,
+    useSensors,
+    DragOverlay,
+} from '@dnd-kit/core';
+import {
+    arrayMove,
+    SortableContext,
+    sortableKeyboardCoordinates,
+    verticalListSortingStrategy,
+} from '@dnd-kit/sortable';
+import {
+    restrictToVerticalAxis,
+    restrictToWindowEdges
+} from '@dnd-kit/modifiers';
+import SortableRanking, { RankingProp, RankingPropNoIndex } from './ranking';
 
-export interface RankingData {
-    id: number
-    name: string
-    href: string
-}
-
-export interface ContainerProps {
+export interface SortableContainerProp {
     mobile: boolean
 }
 
-let initialToken = false;
-
-export const Container: FC<ContainerProps> = (mobileCheck) => {
-
+export default function SortableContainer(props: SortableContainerProp) {
     const [rankings, setRankings] = useState([
         {
             id: 1,
@@ -73,51 +79,83 @@ export const Container: FC<ContainerProps> = (mobileCheck) => {
             name: "Dyson Sphere Program",
             href: "/detail"
         }
-    ])
+    ]);
+    const [activeId, setActiveId] = useState(null);
+    const [activeElement, setActiveElement] = useState<RankingPropNoIndex | undefined>({
+        id: '',
+        name: '',
+        href: '',
+    });
+    //
+    if (props.mobile) {
 
-    const moveRanking = useCallback((dragIndex: number, hoverIndex: number) => {
-        console.log("Movement --> ", dragIndex, "-->", hoverIndex);
-        setRankings((prevRankings: RankingData[]) =>
-            update(prevRankings, {
-                $splice: [
-                    [dragIndex, 1],
-                    [hoverIndex, 0, prevRankings[dragIndex] as RankingData],
-                ],
-            }),
-        )
-    }, [])
+    } else {
 
-    const renderRanking = useCallback(
-        (ranking: { id: number; name: string, href: string }, index: number) => {
-            return (
-                <Ranking
-                    key={ranking.id}
-                    index={index}
-                    id={ranking.id}
-                    name={ranking.name}
-                    href={ranking.href}
-                    moveRanking={moveRanking}
-                />
-            )
-        },
-        [],
+    }
+    const sensors = useSensors(
+        useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates }),
+        useSensor(TouchSensor),
+        useSensor(MouseSensor)
+    );
+    //
+    return (
+        <ul className='w-full h-fit flex flex-col pt-4 gap-4 items-center'>
+            <DndContext sensors={sensors} collisionDetection={closestCenter} onDragStart={handleDragStart} onDragEnd={handleDragEnd}
+
+            >
+                <SortableContext items={rankings} strategy={verticalListSortingStrategy}
+                >
+                    {rankings.map((ranking, index) => (<SortableRanking
+                        key={ranking.id}
+                        index={index + 1}
+                        id={ranking.id}
+                        name={ranking.name}
+                        href={ranking.href}
+                        active={activeId === ranking.id}
+                    ></SortableRanking>))}
+                </SortableContext>
+
+                <DragOverlay className=''
+                    adjustScale={false}
+                    dropAnimation={{
+                        duration: 200,
+                        easing: 'cubic-bezier(.64,.72,.42,1.21)'
+                    }}>
+                    {activeId ? (<SortableRanking
+                        index={"?"}
+                        id={activeId}
+                        name={activeElement?.name}
+                        href={activeElement?.href}
+                    ></SortableRanking>) : null}
+                </DragOverlay>
+
+            </DndContext>
+        </ul>
     )
 
-    if (!initialToken) {
-        setTimeout(() => {
-            moveRanking(1, 1);
-        }, 250);
-        initialToken = true;
+    function handleDragEnd(event: any) {
+        const { active, over } = event;
+        //
+        if (active.id !== over.id) {
+            setRankings((rankings) => {
+                const oldIndex = rankings.findIndex(x => x.id === active.id);
+                const newIndex = rankings.findIndex(x => x.id === over.id);
+
+                return arrayMove(rankings, oldIndex, newIndex);
+            });
+        }
+        //
+        setActiveId(null);
+        setActiveElement({
+            id: '',
+            name: '',
+            href: '',
+        });
     }
 
-    return (
-        <>
-            <div className='w-full h-fit flex flex-col pt-4 gap-4 items-center'>
-                <DndProvider backend={mobileCheck.mobile ? TouchBackend : HTML5Backend}>
-                    {rankings.map((rank, i) => renderRanking(rank, i))}
-                </DndProvider>
-            </div>
-        </>
-    )
+    function handleDragStart(event: any) {
+        setActiveId(event.active.id);
+        setActiveElement(rankings.find(x => x.id === event.active.id));
+    }
 
 }

@@ -1,6 +1,6 @@
 "use client"
 
-import { PlusCircleIcon } from '@heroicons/react/24/solid'
+import { BiSolidCategoryAlt } from "react-icons/bi";
 
 function ChangeCategory(catName: string, catIndex: number) {
     console.log("Category Button : ", catName, catIndex);
@@ -26,7 +26,7 @@ export default function Category(props: any) {
             onClick={() => ChangeCategory(props.name, props.id)}
         >
             <p className="w-full text-slate-100 text-lg">{props.name}</p>
-            <PlusCircleIcon className="w-6 fill-slate-100/25" />
+            <BiSolidCategoryAlt className="w-8 h-8 fill-slate-100/25" />
         </button>
     )
 }

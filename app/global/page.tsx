@@ -1,6 +1,6 @@
 'use client'
 
-import { Container } from "../ui/container";
+import SortableContainer from "../ui/container";
 
 export default function Global() {
     console.log("Page Route : Global");
@@ -13,7 +13,7 @@ export default function Global() {
     //
     return (
         <div id='global-container' className="flex flex-col gap-4">
-            <Container mobile={check}></Container>
+            <SortableContainer mobile={check}></SortableContainer>
         </div>
     )
 }
