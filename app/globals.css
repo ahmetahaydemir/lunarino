@@ -96,6 +96,87 @@ input::selection {
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+.cloud {
+  background: rgba(255, 255, 255, 0.025);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(7.5px);
+  -webkit-backdrop-filter: blur(7.5px);
+  border: 4px dashed rgba(255, 255, 255, 0.025);
+  z-index: 1;
+}
+
+.floating-left {
+  animation: floatingLeft 6s ease-in-out infinite !important;
+
+}
+
+.floating-right {
+  animation: floatingRight 6s ease-in-out infinite !important;
+}
+
+.floating-both {
+  animation: floatingBoth 6s ease-in-out infinite !important;
+}
+
+
+@keyframes floatingLeft {
+  0% {
+    transform: translateY(.6rem) rotate(2deg)
+  }
+
+  50% {
+    transform: translateY(-.6rem) rotate(-2deg)
+  }
+
+  to {
+    transform: translateY(.6rem) rotate(2deg)
+  }
+}
+
+@keyframes floatingRight {
+  0% {
+    transform: translateY(.6rem) rotate(-2deg)
+  }
+
+  50% {
+    transform: translateY(-.6rem) rotate(2deg)
+  }
+
+  to {
+    transform: translateY(.6rem) rotate(-2deg)
+  }
+}
+
+@keyframes floatingBoth {
+  0% {
+    transform: translateY(0.0rem) rotate(0.0deg)
+  }
+
+  17% {
+    transform: translateY(-0.4rem) rotate(2deg)
+  }
+
+  34% {
+    transform: translateY(0.0rem) rotate(0.0deg)
+  }
+
+  51% {
+    transform: translateY(-0.4rem) rotate(0deg)
+  }
+
+  68% {
+    transform: translateY(0.0rem) rotate(0.0deg)
+  }
+
+  85% {
+    transform: translateY(-0.4rem) rotate(-2deg)
+  }
+
+  100% {
+    transform: translateY(0.0rem) rotate(0.0deg)
+  }
+}
+
 .category {
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);

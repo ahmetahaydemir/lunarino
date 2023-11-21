@@ -8,7 +8,7 @@ import Profile from './profile'
 export default function Navbar() {
     const pathname = usePathname();
     return (
-        <div className='w-full absolute bottom-0 flex h-20 pl-4 pr-4 gap-4 items-center justify-evenly bg-black/50 rounded-t-xl'>
+        <div className='cloud rounded-t-xl w-full absolute -bottom-1 flex h-20 pl-4 pr-4 gap-4 items-center justify-evenly'>
             <Link href={'/'}>
                 <FaHome className={`${pathname === '/' ? 'fill-blue-400' : 'fill-blue-100'}` + " h-6 w-6 "} />
             </Link>

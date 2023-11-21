@@ -4,6 +4,7 @@ import { GeistSans } from "geist/font/sans";
 import './globals.css'
 import Navbar from './ui/navbar';
 import AuthProvider from './context/AuthProvider';
+import Topbar from './ui/topbar';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -29,6 +30,7 @@ export default function RootLayout({
             <div className='w-screen h-screen bg img-4' />
           </div>
           <div className='w-screen h-screen bg-overlay' />
+          <Topbar></Topbar>
           <div className='w-screen lg:w-256 h-screen origin-center'>
             {children}
           </div>
