@@ -4,8 +4,13 @@ import { usePathname } from 'next/navigation'
 
 export default function Topbar() {
     const pathname = usePathname();
-    let currentPageName = "Home";
+    let currentPageName = "?";
+    let leftNotice = "- O";
+    let rightNotice = "O -";
     switch (pathname) {
+        case "/":
+            currentPageName = "Home";
+            break;
         case "/global":
             currentPageName = "Global";
             break;
@@ -24,14 +29,17 @@ export default function Topbar() {
         case "/about":
             currentPageName = "About";
             break;
-        default:
+        case "/detail":
+            currentPageName = "Detail";
             break;
     }
     //
     return (
-        <div className='w-full flex justify-center absolute -top-1'>
+        <div className='w-full flex justify-center absolute top-0'>
             <div className='cloud relative w-full h-8 rounded-b-xl text-center'>
                 <h3 className='text-white/10'>{"- - " + currentPageName + " - -"}</h3>
+                <p className='absolute left-4 top-0 text-white/10'>{leftNotice}</p>
+                <p className='absolute right-4 top-0 text-white/10'>{rightNotice}</p>
             </div>
         </div>
     )

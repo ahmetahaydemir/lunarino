@@ -11,7 +11,7 @@ import { BiSolidCategoryAlt } from 'react-icons/bi';
 export default function Navbar() {
     const pathname = usePathname();
     return (
-        <div className='cloud rounded-t-xl w-full absolute -bottom-1 flex h-20 pl-2 pr-2 gap-4 items-center justify-evenly'>
+        <div className='cloud rounded-t-xl w-full absolute bottom-0 flex h-20 pl-2 pr-2 gap-4 items-center justify-evenly'>
             <Link href={'/'}>
                 <FaHome className={`${pathname === '/' ? 'fill-blue-400' : 'fill-blue-100'}` + " h-8 w-8 "} />
             </Link>
