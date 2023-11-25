@@ -1,6 +1,6 @@
 'use client'
 
-import { LuLightbulb, LuView, LuActivity } from "react-icons/lu";
+import { LuView, LuActivity, LuGlobe2, LuListFilter } from "react-icons/lu";
 import SortableContainer from "../ui/container";
 
 export default function Global() {
@@ -14,18 +14,23 @@ export default function Global() {
     //
     return (
         <div id='global-container' className="flex flex-col gap-4 pt-12">
-            <SortableContainer mobile={check}></SortableContainer>
+            <SortableContainer mobile={check} editable={false}></SortableContainer>
 
-            <div className="flex justify-center gap-4 pt-4">
-                <button className='w-32 h-12 rounded-xl bg-blue-600/75 text-white font-semibold flex gap-2 items-center justify-center'>
+            <div className="flex items-center justify-between gap-4 pt-4">
+                <button className='w-32 h-12 rounded-r-xl bg-blue-600/75 text-white font-semibold flex gap-2 items-center justify-center'>
                     <LuView className=" h-6 w-6 " />
                     <p>View</p>
                 </button>
-                <button className='w-32 h-12 rounded-xl bg-blue-600/75 text-white font-semibold flex gap-2 items-center justify-center'>
+                <div className="h-12 flex flex-col justify-center items-center animate-pulse">
+                    <LuListFilter className="w-8 h-8 stroke-white" ></LuListFilter >
+                    <p className="text-white">12,451</p>
+                </div>
+                <button className='w-32 h-12 rounded-l-xl bg-blue-600/75 text-white font-semibold flex gap-2 items-center justify-center'>
                     <LuActivity className=" h-6 w-6 " />
-                    <p>Input</p>
+                    <p>Thoughts</p>
                 </button>
             </div>
+
         </div>
     )
 }

@@ -25,6 +25,7 @@ import SortableRanking, { RankingProp, RankingPropNoIndex } from './ranking';
 
 export interface SortableContainerProp {
     mobile: boolean
+    editable: boolean
 }
 
 export default function SortableContainer(props: SortableContainerProp) {
@@ -107,8 +108,8 @@ export default function SortableContainer(props: SortableContainerProp) {
     return (
         <ul className='w-full h-fit flex flex-col gap-4 items-center'>
             <DndContext sensors={sensors} collisionDetection={closestCenter} onDragStart={handleDragStart} onDragEnd={handleDragEnd}
-
             >
+
                 <SortableContext items={rankings} strategy={verticalListSortingStrategy}
                 >
                     {rankings.map((ranking, index) => (<SortableRanking
@@ -118,6 +119,7 @@ export default function SortableContainer(props: SortableContainerProp) {
                         name={ranking.name}
                         href={ranking.href}
                         active={activeId === ranking.id}
+                        editable={props.editable}
                     ></SortableRanking>))}
                 </SortableContext>
 
@@ -132,6 +134,7 @@ export default function SortableContainer(props: SortableContainerProp) {
                         name={activeElement?.name}
                         href={activeElement?.href}
                         active={false}
+                        editable={props.editable}
                     ></SortableRanking>) : null}
                 </DragOverlay>
 

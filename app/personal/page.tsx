@@ -1,5 +1,6 @@
 'use client'
 
+import { LuCheck, LuX, LuUnfoldVertical } from "react-icons/lu";
 import SortableContainer from "../ui/container";
 
 export default function Personal() {
@@ -12,8 +13,21 @@ export default function Personal() {
     }
     //
     return (
-        <div id='global-container' className="flex flex-col gap-4 pt-12">
-            <SortableContainer mobile={check}></SortableContainer>
+        <div id='personal-container' className="flex flex-col gap-4 pt-12">
+            <SortableContainer mobile={check} editable={true}></SortableContainer>
+
+            <div className="flex items-center justify-between gap-4 pt-4">
+                <button className='w-32 h-12 rounded-r-xl bg-teal-600/75 text-white font-semibold flex gap-2 items-center justify-center'>
+                    <LuX className=" h-6 w-6 " />
+                    <p>Discard</p>
+                </button>
+                <LuUnfoldVertical className="w-8 h-8 stroke-white" />
+                <button className='w-32 h-12 rounded-l-xl bg-teal-600/75 text-white font-semibold flex gap-2 items-center justify-center'>
+                    <p>Apply</p>
+                    <LuCheck className=" h-6 w-6 " />
+                </button>
+            </div>
+
         </div>
     )
 }

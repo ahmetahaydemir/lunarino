@@ -14,6 +14,7 @@ export interface RankingProp {
     name: string | undefined
     href: string | undefined
     active: boolean
+    editable: boolean
 }
 export interface RankingPropNoIndex {
     id: any
@@ -41,24 +42,54 @@ export default function SortableRanking(props: RankingProp) {
         transition,
     };
     //
+    let rankColorStyle = "";
+    let overlayColorStyle = "";
+    if (props.editable) {
+        if (props.index === "?" || props.active) {
+            rankColorStyle = "bg-green-400 shadow-xl ";
+            overlayColorStyle = "fill-green-500 -z-10 visible ";
+        } else {
+            rankColorStyle = "bg-green-200 ";
+            overlayColorStyle = "invisible ";
+        }
+    } else {
+        if (props.index === "?" || props.active) {
+            rankColorStyle = "bg-blue-400 shadow-xl ";
+            overlayColorStyle = "fill-blue-500 -z-10 visible ";
+        } else {
+            rankColorStyle = "bg-blue-200 ";
+            overlayColorStyle = "invisible ";
+        }
+    }
+    //
     return (
         <li ref={setNodeRef}
             style={style}
-            {...attributes}
-            {...listeners}
+
             className={(props.active ? 'blur-sm ' : '') + 'w-full flex justify-center items-center'}
         >
             <Link
                 href={props.href || "/"}
                 className={(props.active ? 'opacity-25 ' : 'opacity-100') + " ranking flex w-11/12 h-[42px] items-center justify-center gap-2 rounded-md font-medium"}
             >
-                <div className={((props.index === "?" || props.active) ? "bg-blue-400 shadow-lg " : "bg-blue-200 ") + ' flex w-[64px] h-[48px] text-black justify-center text-xl rounded-2xl'}>
-                    <b className={props.index === "?" ? 'self-center ' : 'self-center'}>{props.index}</b>
-                    <PiCaretUpDownBold className={(props.index === "?" ? 'visible  -z-10 ' : 'invisible') + ' w-20 h-20 fill-blue-500 absolute self-center pointer-events-none'}></PiCaretUpDownBold>
+                <div className={rankColorStyle + 'flex w-[64px] h-[48px] text-black justify-center text-xl rounded-2xl'}>
+                    <b className="self-center">{props.index}</b>
+                    <PiCaretUpDownBold className={overlayColorStyle + 'w-20 h-20 absolute self-center pointer-events-none'}></PiCaretUpDownBold>
                 </div>
                 <FaAngleRight className="w-6 h-6 fill-white/25" />
                 <p className="w-full text-slate-100 text-lg">{props.name}</p>
-                <MdDragIndicator className="w-6 h-6 fill-white/25 absolute right-1" />
+                {
+                    props.editable ?
+                        <div {...attributes}
+                            {...listeners}
+                            className={"w-24 h-12 absolute right-1 flex justify-end items-center -mr-4 " + (props.index === "?" ? "cursor-grabbing" : "cursor-grab")}
+                        >
+                            <MdDragIndicator
+                                className="w-8 h-8 fill-white/50 mr-4 animate-pulse" />
+                        </div>
+                        :
+                        ''
+                }
             </Link>
         </li>
     )
