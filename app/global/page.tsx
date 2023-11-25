@@ -1,5 +1,6 @@
 'use client'
 
+import { LuLightbulb, LuView, LuActivity } from "react-icons/lu";
 import SortableContainer from "../ui/container";
 
 export default function Global() {
@@ -14,6 +15,17 @@ export default function Global() {
     return (
         <div id='global-container' className="flex flex-col gap-4 pt-12">
             <SortableContainer mobile={check}></SortableContainer>
+
+            <div className="flex justify-center gap-4 pt-4">
+                <button className='w-32 h-12 rounded-xl bg-blue-600/75 text-white font-semibold flex gap-2 items-center justify-center'>
+                    <LuView className=" h-6 w-6 " />
+                    <p>View</p>
+                </button>
+                <button className='w-32 h-12 rounded-xl bg-blue-600/75 text-white font-semibold flex gap-2 items-center justify-center'>
+                    <LuActivity className=" h-6 w-6 " />
+                    <p>Input</p>
+                </button>
+            </div>
         </div>
     )
 }
