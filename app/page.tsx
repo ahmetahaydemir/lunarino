@@ -6,7 +6,7 @@ export default function Home() {
   console.log("Page Route : Home");
 
   return (
-    <main className='flex flex-col gap-4 pt-12 items-center justify-center' >
+    <main className='flex flex-col gap-4 pt-12 items-center justify-center m-0 overflow-hidden' >
       <div className='w-full h-64 relative'>
         <Image src={'/logo/logo-bg.png'}
           width={512}
