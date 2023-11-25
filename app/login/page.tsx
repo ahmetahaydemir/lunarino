@@ -8,7 +8,7 @@ export default function Login() {
     console.log("Page Route : Login");
 
     return <div className="w-full flex flex-col gap-6 pt-12 items-center justify-center text-1xl">
-        <h2 className="text-2xl text-white">OAuth Login Page</h2>
+        <h2 className="text-2xl text-white">- - - - -</h2>
 
         <button className="bg-white text-black w-64 h-16 flex flex-row items-center justify-evenly text-lg drop-shadow-lg rounded-lg"
             onClick={() => signIn('google', { callbackUrl: '/user' })}>
@@ -40,5 +40,6 @@ export default function Login() {
             <FaTwitter size={32} ></FaTwitter>
             Sign in with Twitter
         </button>
+
     </div>
 }

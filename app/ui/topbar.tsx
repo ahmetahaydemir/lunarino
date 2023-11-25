@@ -5,8 +5,8 @@ import { usePathname } from 'next/navigation'
 export default function Topbar() {
     const pathname = usePathname();
     let currentPageName = "?";
-    let leftNotice = "- O";
-    let rightNotice = "O -";
+    let leftNotice = "- -";
+    let rightNotice = "- -";
     switch (pathname) {
         case "/":
             currentPageName = "Home";
@@ -19,6 +19,9 @@ export default function Topbar() {
             break;
         case "/category":
             currentPageName = "Category";
+            break;
+        case "/subcategory":
+            currentPageName = "Subcategory";
             break;
         case "/user":
             currentPageName = "User";
@@ -35,7 +38,7 @@ export default function Topbar() {
     }
     //
     return (
-        <div className='w-full flex justify-center absolute top-0'>
+        <div className='w-full flex justify-center fixed -top-1 z-10'>
             <div className='cloud relative w-full h-8 rounded-b-xl text-center'>
                 <h3 className='text-white/10'>{"- - " + currentPageName + " - -"}</h3>
                 <p className='absolute left-4 top-0 text-white/10'>{leftNotice}</p>

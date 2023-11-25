@@ -5,14 +5,14 @@
 html {
   margin: 0;
   height: 100%;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 body {
   background-color: black;
   margin: 0;
   height: 100%;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .bg-container {
@@ -88,7 +88,6 @@ input::selection {
   backdrop-filter: blur(7.5px);
   -webkit-backdrop-filter: blur(7.5px);
   border: 4px dashed rgba(255, 255, 255, 0.025);
-  z-index: 1;
 }
 
 .floating-left {
@@ -169,6 +168,14 @@ input::selection {
   backdrop-filter: blur(7.5px);
   -webkit-backdrop-filter: blur(7.5px);
   border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.subcategory {
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(7.5px);
+  -webkit-backdrop-filter: blur(7.5px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
 }
 
 input:focus {
