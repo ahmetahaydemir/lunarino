@@ -87,16 +87,22 @@ export default function SortableContainer(props: SortableContainerProp) {
         href: '',
     });
     //
-    if (props.mobile) {
-
-    } else {
-
-    }
-    const sensors = useSensors(
+    let sensors = useSensors(
         useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates }),
         useSensor(TouchSensor),
         useSensor(MouseSensor)
     );
+    // let sensors = undefined;
+    // if (props.mobile) {
+    //     sensors = useSensors(
+    //         useSensor(TouchSensor),
+    //     );
+    // } else {
+    //     sensors = useSensors(
+    //         useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates }),
+    //         useSensor(MouseSensor)
+    //     );
+    // }
     //
     return (
         <ul className='w-full h-fit flex flex-col gap-4 items-center'>
