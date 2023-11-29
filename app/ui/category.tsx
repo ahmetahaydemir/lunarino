@@ -21,8 +21,8 @@ function ChangeCategory(catName: string, catIndex: number) {
 
 export default function CategoryContainer(props: any) {
     return (
-        <Link href={'/subcategory'}
-            className={props.color + ' category flex flex-col shadow-md w-36 md:w-80 h-28 md:h-64 items-center justify-center gap-2 rounded-md font-medium hover:border-indigo-300'}
+        <Link href={'/subcategory' + '?cat=' + props.name.toLowerCase()}
+            className={props.color + ' category flex flex-col shadow-md w-2/5 md:w-80 h-24 md:h-64 items-center justify-center gap-1 rounded-md font-medium hover:border-indigo-300'}
             onClick={() => ChangeCategory(props.name, props.id)}
         >
             <p className="w-full text-white text-lg text-center">{props.name}</p>

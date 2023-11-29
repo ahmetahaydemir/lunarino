@@ -15,22 +15,6 @@ export default function Global() {
     return (
         <div id='global-container' className="flex flex-col gap-4 pt-12">
             <SortableContainer mobile={check} editable={false}></SortableContainer>
-
-            <div className="flex items-center justify-between gap-4 pt-4">
-                <button className='w-32 h-12 rounded-r-xl bg-blue-600/75 text-white font-semibold flex gap-2 items-center justify-center'>
-                    <LuView className=" h-6 w-6 " />
-                    <p>View</p>
-                </button>
-                <div className="h-12 flex flex-col justify-center items-center animate-pulse">
-                    <LuListFilter className="w-8 h-8 stroke-white" ></LuListFilter >
-                    <p className="text-white">12,451</p>
-                </div>
-                <button className='w-32 h-12 rounded-l-xl bg-blue-600/75 text-white font-semibold flex gap-2 items-center justify-center'>
-                    <LuActivity className=" h-6 w-6 " />
-                    <p>Thoughts</p>
-                </button>
-            </div>
-
         </div>
     )
 }

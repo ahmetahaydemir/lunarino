@@ -5,6 +5,7 @@ import Navbar from './ui/navbar';
 import AuthProvider from './context/AuthProvider';
 import Topbar from './ui/topbar';
 import { URL } from 'url';
+import Actionbar from './ui/actionbar';
 
 export const metadata: Metadata = {
   title: 'Lunarino | Opinionated Ranking Board',
@@ -47,6 +48,7 @@ export default function RootLayout({
           <div className='w-screen lg:w-256 h-screen origin-center'>
             {children}
           </div>
+          <Actionbar></Actionbar>
           <Navbar></Navbar>
         </AuthProvider>
       </body>

@@ -1,26 +1,63 @@
 'use client'
 
-import FilterContainer from "../ui/filter";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import SubCategoryContainer from "../ui/subcategory";
 
 export default function SubCategory() {
     console.log("Page Route : Subcategory");
+    const searchParams = useSearchParams()
+    const pathname = usePathname()
+    const router = useRouter()
     //
-    function OnListingSearch(props: any) {
-        console.log("Trigger Search : ", props.target.value);
+    function OnListingType(props: any) {
+        console.log("Search Query Input : ", props.target.value);
+        let urlParams = new URLSearchParams(searchParams)
+        if (props.target.value === '') {
+            urlParams.delete('q');
+        } else {
+            urlParams.set('q', props.target.value);
+        }
+        router.replace(pathname + '?' + urlParams.toString());
+    }
+    function OnListingSort(searchType: string) {
+        console.log("Search Type Selection : ", searchType);
+        let urlParams = new URLSearchParams(searchParams)
+        if (searchType === '') {
+            urlParams.delete('q');
+        } else {
+            urlParams.set('type', searchType);
+        }
+        router.replace(pathname + '?' + urlParams.toString());
     }
     //
     return (
         <main className='flex flex-col items-center justify-center gap-4 pt-12' >
             <div className='flex flex-row flex-wrap justify-center gap-4'>
-                <FilterContainer id={0.0} name={"Popular"} color={"bg-blue-600/10"} type={"popular"}></FilterContainer>
-                <FilterContainer id={0.1} name={"Timely"} color={"bg-rose-600/10"} type={"timely"}></FilterContainer>
-                <FilterContainer id={0.2} name={"Personal"} color={"bg-green-600/10"} type={"personal"}></FilterContainer>
+
+                <button
+                    className={'bg-blue-600/25 flex flex-col shadow-md w-24 h-12 items-center gap-1 justify-center rounded-md font-small hover:border-indigo-300'}
+                    onClick={() => OnListingSort("popular")}
+                >
+                    <p className="w-full text-white text-lg text-center">Popular</p>
+                </button>
+                <button
+                    className={'bg-green-600/25 flex flex-col shadow-md w-24 h-12 items-center gap-1 justify-center rounded-md font-small hover:border-indigo-300'}
+                    onClick={() => OnListingSort("timely")}
+                >
+                    <p className="w-full text-white text-lg text-center">Timely</p>
+                </button>
+                <button
+                    className={'bg-red-600/25 flex flex-col shadow-md w-24 h-12 items-center gap-1 justify-center rounded-md font-small hover:border-indigo-300'}
+                    onClick={() => OnListingSort("personal")}
+                >
+                    <p className="w-full text-white text-lg text-center">Personal</p>
+                </button>
+
             </div>
             <input
                 id="listing-search"
                 placeholder="Search..."
-                onInput={OnListingSearch}
+                onChange={OnListingType}
                 className="w-full h-12 bg-white/10 text-center border-b-4 border-dashed border-white/10 animate-pulse caret-white text-lg text-white selection:bg-cyan-500">
             </input>
             <div className='flex flex-wrap justify-center gap-4 overflow-y-auto'>

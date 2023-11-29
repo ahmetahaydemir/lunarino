@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { FaHome } from "react-icons/fa";
 import { usePathname } from 'next/navigation'
 import Profile from './profile'
-import { LuAlignCenterVertical } from 'react-icons/lu';
+import { LuAlignCenterVertical, LuLightbulb } from 'react-icons/lu';
 import { FaRankingStar } from 'react-icons/fa6';
 import { BiSolidCategoryAlt } from 'react-icons/bi';
 

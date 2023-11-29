@@ -29,15 +29,6 @@ export default function Home() {
       <h2 className='text-white/75 font-mono font-bold text-xl'>Opinionated Ranking Board</h2>
       <p className='text-white/50 pr-4 pl-4 text-center text-lg'>At the end of the day, we prefer one over the other. Let's discover our preferences without arbitrary scoring methods.</p>
 
-      <Link href={'/category'} className='w-44 h-12 rounded-xl mt-1 bg-blue-600/75 text-white font-semibold flex gap-3 items-center justify-center'>
-        <LuAlignCenterVertical className=" h-6 w-6 " />
-        <p>Get started</p>
-      </Link>
-
-      <Link href={'/about'} className='w-32 h-12 rounded-xl bg-blue-600/75 text-white font-semibold flex gap-3 items-center justify-center'>
-        <LuLightbulb className=" h-6 w-6 " />
-        <p>About</p>
-      </Link>
     </main>
   )
 }
