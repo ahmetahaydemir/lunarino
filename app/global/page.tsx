@@ -14,7 +14,7 @@ export default function Global() {
     //
     return (
         <div id='global-container' className="flex flex-col gap-4 pt-12">
-            <SortableContainer mobile={check} editable={false}></SortableContainer>
+            <SortableContainer editable={false} sorted={false} activeId={undefined} activeElement={undefined} dataArray={[]}></SortableContainer>
         </div>
     )
 }
