@@ -119,42 +119,42 @@ export default function Personal() {
     let unsortedArray: RankingPropNoIndex[] = [
         {
             id: "11",
-            name: "Elma",
+            name: "Duduşları",
             href: "/detail"
         },
         {
             id: "22",
-            name: "Portakal",
+            name: "Yanaşları",
             href: "/detail"
         },
         {
             id: "33",
-            name: "Karpuz",
+            name: "Popişi",
             href: "/detail"
         },
         {
             id: "44",
-            name: "Kiraz",
+            name: "Parmikleri",
             href: "/detail"
         },
         {
             id: "55",
-            name: "Muz",
+            name: "Memiktoları",
             href: "/detail"
         },
         {
             id: "66",
-            name: "Limon",
+            name: "Bıngılları",
             href: "/detail"
         },
         {
             id: "77",
-            name: "Üzüm",
+            name: "Bacişleri",
             href: "/detail"
         },
         {
             id: "88",
-            name: "Çilek",
+            name: "Lüleleri",
             href: "/detail"
         }
     ];
