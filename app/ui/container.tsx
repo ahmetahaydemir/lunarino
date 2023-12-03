@@ -1,170 +1,78 @@
 'use client'
 
-import React, { useState } from 'react';
 import {
-    DndContext,
-    closestCenter,
-    KeyboardSensor,
-    TouchSensor,
-    MouseSensor,
-    useSensor,
-    useSensors,
-    DragOverlay,
+    useDroppable,
 } from '@dnd-kit/core';
 import {
-    arrayMove,
+    rectSortingStrategy,
     SortableContext,
-    sortableKeyboardCoordinates,
     verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
-import {
-    restrictToVerticalAxis,
-    restrictToWindowEdges
-} from '@dnd-kit/modifiers';
-import SortableRanking, { RankingProp, RankingPropNoIndex } from './ranking';
+import SortableRanking, { RankingPropNoIndex } from './ranking';
+import { FaAngleLeft, FaAngleRight, FaAngleUp, FaSortUp } from 'react-icons/fa';
 
 export interface SortableContainerProp {
-    mobile: boolean
     editable: boolean
+    sorted: boolean
+    activeId: any
+    activeElement: any
+    dataArray: RankingPropNoIndex[],
 }
 
 export default function SortableContainer(props: SortableContainerProp) {
-    const [rankings, setRankings] = useState([
-        {
-            id: 1,
-            name: "Slay the Spire",
-            href: "/detail"
-        },
-        {
-            id: 2,
-            name: "Risk of Rain 2",
-            href: "/detail"
-        },
-        {
-            id: 3,
-            name: "Vampire Survivors",
-            href: "/detail"
-        },
-        {
-            id: 4,
-            name: "Against the Storm",
-            href: "/detail"
-        },
-        {
-            id: 5,
-            name: "Brotato",
-            href: "/detail"
-        },
-        {
-            id: 6,
-            name: "Dark Souls",
-            href: "/detail"
-        },
-        {
-            id: 7,
-            name: "For the King",
-            href: "/detail"
-        },
-        {
-            id: 8,
-            name: "Factorio",
-            href: "/detail"
-        },
-        {
-            id: 9,
-            name: "Disco Elysium",
-            href: "/detail"
-        },
-        {
-            id: 10,
-            name: "Dyson Sphere Program",
-            href: "/detail"
-        }
-    ]);
-    const [activeId, setActiveId] = useState(null);
-    const [activeElement, setActiveElement] = useState<RankingPropNoIndex | undefined>({
-        id: '',
-        name: '',
-        href: '',
+    //
+    const {
+        setNodeRef,
+    } = useDroppable({
+        id: (props.sorted ? 'sorted' : 'unsorted'),
     });
     //
-    let sensors = useSensors(
-        useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates }),
-        useSensor(TouchSensor),
-        useSensor(MouseSensor)
-    );
-    // let sensors = undefined;
-    // if (props.mobile) {
-    //     sensors = useSensors(
-    //         useSensor(TouchSensor),
-    //     );
-    // } else {
-    //     sensors = useSensors(
-    //         useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates }),
-    //         useSensor(MouseSensor)
-    //     );
-    // }
-    //
-    return (
-        <ul className='w-full h-fit flex flex-col gap-4 items-center'>
-            <DndContext sensors={sensors} collisionDetection={closestCenter} onDragStart={handleDragStart} onDragEnd={handleDragEnd}
+    if (props.sorted) {
+        //
+        return (
+            <SortableContext id='sorted' items={props.dataArray} strategy={verticalListSortingStrategy}
             >
-
-                <SortableContext items={rankings} strategy={verticalListSortingStrategy}
-                >
-                    {rankings.map((ranking, index) => (<SortableRanking
+                <ul ref={setNodeRef}
+                    className='w-full h-max flex flex-col gap-4 items-center'>
+                    {props.dataArray.map((ranking, index) => (<SortableRanking
                         key={ranking.id}
                         index={index + 1}
                         id={ranking.id}
                         name={ranking.name}
                         href={ranking.href}
-                        active={activeId === ranking.id}
+                        active={props.activeId === ranking.id}
                         editable={props.editable}
+                        sorted={props.sorted}
                     ></SortableRanking>))}
-                </SortableContext>
+                </ul>
 
-                <DragOverlay
-                    dropAnimation={{
-                        duration: 200,
-                        easing: 'cubic-bezier(.64,.72,.42,1.21)'
-                    }}>
-                    {activeId ? (<SortableRanking
-                        index={"?"}
-                        id={activeId}
-                        name={activeElement?.name}
-                        href={activeElement?.href}
-                        active={false}
+            </SortableContext >
+        )
+    } else {
+        //
+        return (
+            <SortableContext id='unsorted' items={props.dataArray} strategy={rectSortingStrategy}
+            >
+
+                <div className="w-full h-24 flex justify-center items-end">
+                    <FaSortUp className="fill-black/25 w-8 h-8 relative -bottom-4"></FaSortUp>
+                </div>
+
+                <ul ref={setNodeRef}
+                    className='w-full h-full flex flex-wrap pt-4 justify-center items-start content-start gap-y-4 bg-gradient-to-b from-black/25 to-transparent border-t-4 border-dashed border-black/25'>
+                    {props.dataArray.map((ranking, index) => (<SortableRanking
+                        key={ranking.id}
+                        index={index + 1}
+                        id={ranking.id}
+                        name={ranking.name}
+                        href={ranking.href}
+                        active={props.activeId === ranking.id}
                         editable={props.editable}
-                    ></SortableRanking>) : null}
-                </DragOverlay>
-
-            </DndContext>
-        </ul>
-    )
-
-    function handleDragEnd(event: any) {
-        const { active, over } = event;
-        //
-        if (active.id !== over.id) {
-            setRankings((rankings) => {
-                const oldIndex = rankings.findIndex(x => x.id === active.id);
-                const newIndex = rankings.findIndex(x => x.id === over.id);
-
-                return arrayMove(rankings, oldIndex, newIndex);
-            });
-        }
-        //
-        setActiveId(null);
-        setActiveElement({
-            id: '',
-            name: '',
-            href: '',
-        });
-    }
-
-    function handleDragStart(event: any) {
-        setActiveId(event.active.id);
-        setActiveElement(rankings.find(x => x.id === event.active.id));
+                        sorted={props.sorted}
+                    ></SortableRanking>))}
+                </ul>
+            </SortableContext>
+        )
     }
 
 }

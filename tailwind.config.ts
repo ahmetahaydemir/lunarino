@@ -20,6 +20,9 @@ const config: Config = {
       height: {
         '128': '32rem',
         '256': '64rem'
+      },
+      flexBasis: {
+        'rank': '47.5%',
       }
     },
   },
