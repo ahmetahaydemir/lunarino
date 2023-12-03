@@ -12,149 +12,51 @@ let currentOverlayToken = false;
 export default function Personal() {
     console.log("Page Route : Personal");
     //
-    let sortedArray: RankingPropNoIndex[] = [
-        // {
-        //     id: "1",
-        //     name: "Slay the Spire",
-        //     href: "/detail"
-        // },
-        // {
-        //     id: "2",
-        //     name: "Risk of Rain 2",
-        //     href: "/detail"
-        // },
-        // {
-        //     id: "3",
-        //     name: "Vampire Survivors",
-        //     href: "/detail"
-        // },
-        // {
-        //     id: "4",
-        //     name: "Against the Storm",
-        //     href: "/detail"
-        // },
-        // {
-        //     id: 5,
-        //     name: "Brotato",
-        //     href: "/detail"
-        // },
-        // {
-        //     id: 6,
-        //     name: "Dark Souls",
-        //     href: "/detail"
-        // },
-        // {
-        //     id: 7,
-        //     name: "For the King",
-        //     href: "/detail"
-        // },
-        // {
-        //     id: 8,
-        //     name: "Factorio",
-        //     href: "/detail"
-        // },
-        // {
-        //     id: 9,
-        //     name: "Disco Elysium",
-        //     href: "/detail"
-        // },
-        // {
-        //     id: 10,
-        //     name: "Dyson Sphere Program",
-        //     href: "/detail"
-        // }
-    ];
-    // let unsortedArray: RankingPropNoIndex[] = [
-    //     {
-    //         id: "11",
-    //         name: "Slay the Spire",
-    //         href: "/detail"
-    //     },
-    //     {
-    //         id: "22",
-    //         name: "Risk of Rain 2",
-    //         href: "/detail"
-    //     },
-    //     {
-    //         id: "33",
-    //         name: "Vampire Survivors",
-    //         href: "/detail"
-    //     },
-    //     {
-    //         id: "44",
-    //         name: "Against the Storm",
-    //         href: "/detail"
-    //     },
-    //     {
-    //         id: "55",
-    //         name: "Brotato",
-    //         href: "/detail"
-    //     },
-    //     {
-    //         id: "66",
-    //         name: "Dark Souls",
-    //         href: "/detail"
-    //     },
-    //     {
-    //         id: "77",
-    //         name: "For the King",
-    //         href: "/detail"
-    //     },
-    //     {
-    //         id: "88",
-    //         name: "Factorio",
-    //         href: "/detail"
-    //     },
-    //     {
-    //         id: "99",
-    //         name: "Disco Elysium",
-    //         href: "/detail"
-    //     },
-    //     {
-    //         id: "100",
-    //         name: "Dyson Sphere Program",
-    //         href: "/detail"
-    //     }
-    // ];
+    let sortedArray: RankingPropNoIndex[] = [];
     let unsortedArray: RankingPropNoIndex[] = [
         {
             id: "11",
-            name: "Duduşları",
+            name: "Elma",
             href: "/detail"
         },
         {
             id: "22",
-            name: "Yanaşları",
+            name: "Portakal",
             href: "/detail"
         },
         {
             id: "33",
-            name: "Popişi",
+            name: "Karpuz",
             href: "/detail"
         },
         {
             id: "44",
-            name: "Parmikleri",
+            name: "Kiraz",
             href: "/detail"
         },
         {
             id: "55",
-            name: "Memiktoları",
+            name: "Muz",
             href: "/detail"
         },
         {
             id: "66",
-            name: "Bıngılları",
+            name: "Limon",
             href: "/detail"
         },
         {
             id: "77",
-            name: "Bacişleri",
+            name: "Üzüm",
             href: "/detail"
         },
         {
             id: "88",
-            name: "Lüleleri",
+            name: "Çilek",
+            href: "/detail"
+        },
+        {
+            id: "99",
+            name: "Ananas",
             href: "/detail"
         }
     ];
@@ -188,7 +90,7 @@ export default function Personal() {
                 <SortableContainer editable={true} sorted={true} dataArray={rankings.sorted} activeId={activeElement?.id} activeElement={activeElement}></SortableContainer>
 
                 <div
-                    className={(rankings.sorted.length > 0 ? 'hidden ' : ' ') + " opacity-50 self-center animate-pulse flex w-8/12 h-[54px] absolute top-12 items-center justify-center gap-4 rounded-xl font-medium bg-black/25"}
+                    className={(rankings.sorted.length > 0 ? 'hidden ' : ' ') + " self-center animate-pulse flex w-8/12 h-[54px] absolute top-12 items-center justify-center gap-4 rounded-xl font-medium bg-black/25"}
                 >
                     <FaAngleRight className="w-8 h-8 fill-white/25" />
                     <p className="text-slate-100 text-center text-xl">{"Drop Here"}</p>

@@ -56,6 +56,8 @@ export default function SortableContainer(props: SortableContainerProp) {
 
                 <div className="w-full h-24 flex justify-center items-end">
                     <FaSortUp className="fill-black/25 w-8 h-8 relative -bottom-4"></FaSortUp>
+                    <FaSortUp className="fill-black/25 w-12 h-12 relative -bottom-5"></FaSortUp>
+                    <FaSortUp className="fill-black/25 w-8 h-8 relative -bottom-4"></FaSortUp>
                 </div>
 
                 <ul ref={setNodeRef}

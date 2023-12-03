@@ -32,7 +32,7 @@ export default function Actionbar() {
                     <p>View</p>
                 </Link>
                 <div className="h-12 pb-2 flex flex-col justify-center items-center animate-pulse">
-                    <LuListFilter className="w-8 h-8 stroke-white" ></LuListFilter >
+                    <LuListFilter className="w-8 h-8 stroke-white/50" ></LuListFilter >
                 </div>
                 <Link href={'/global'} className='w-32 h-12 rounded-t-xl bg-blue-600/75 text-white font-semibold flex gap-2 items-center justify-center'>
                     <p>Thoughts</p>
@@ -50,7 +50,7 @@ export default function Actionbar() {
                     <p>Discard</p>
                 </Link>
                 <div className="h-12 pb-2 flex flex-col justify-center items-center animate-pulse">
-                    <LuUnfoldVertical className="w-8 h-8 stroke-white" />
+                    <LuUnfoldVertical className="w-8 h-8 stroke-white/50" />
                 </div>
                 <Link href={'/personal'} className='w-32 h-12 rounded-t-xl bg-teal-600/75 text-white font-semibold flex gap-2 items-center justify-center'>
                     <p>Confirm</p>
