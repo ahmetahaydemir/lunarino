@@ -17,6 +17,7 @@ export interface SortableContainerProp {
     activeId: any
     activeElement: any
     dataArray: RankingPropNoIndex[],
+    dataLength: number
 }
 
 export default function SortableContainer(props: SortableContainerProp) {
@@ -54,7 +55,7 @@ export default function SortableContainer(props: SortableContainerProp) {
             <SortableContext id='unsorted' items={props.dataArray} strategy={rectSortingStrategy}
             >
 
-                <div className="w-full h-24 flex justify-center items-end">
+                <div className={(props.dataArray.length < props.dataLength ? 'h-12 ' : 'h-24 animate-pulse ') + "w-full flex justify-center items-end"}>
                     <FaSortUp className="fill-black/25 w-8 h-8 relative -bottom-4"></FaSortUp>
                     <FaSortUp className="fill-black/25 w-12 h-12 relative -bottom-5"></FaSortUp>
                     <FaSortUp className="fill-black/25 w-8 h-8 relative -bottom-4"></FaSortUp>
@@ -73,7 +74,7 @@ export default function SortableContainer(props: SortableContainerProp) {
                         sorted={props.sorted}
                     ></SortableRanking>))}
                 </ul>
-            </SortableContext>
+            </SortableContext >
         )
     }
 

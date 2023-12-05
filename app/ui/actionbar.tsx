@@ -32,9 +32,9 @@ export default function Actionbar() {
                     <p>View</p>
                 </Link>
                 <div className="h-12 pb-2 flex flex-col justify-center items-center animate-pulse">
-                    <LuListFilter className="w-8 h-8 stroke-white/50" ></LuListFilter >
+                    <LuUnfoldVertical className="w-8 h-8 stroke-white/50" ></LuUnfoldVertical >
                 </div>
-                <Link href={'/global'} className='w-32 h-12 rounded-t-xl bg-blue-600/75 text-white font-semibold flex gap-2 items-center justify-center'>
+                <Link href={'/personal'} className='w-32 h-12 rounded-t-xl bg-blue-600/75 text-white font-semibold flex gap-2 items-center justify-center'>
                     <p>Thoughts</p>
                     <LuView className=" h-6 w-6 " />
                 </Link>
@@ -43,18 +43,14 @@ export default function Actionbar() {
         )
     } else if (pathname === "/personal") {
         return (
-            <div className='w-full gap-4 flex flex-row items-center justify-center fixed bottom-[72px]'>
+            <div className='w-full flex flex-row items-center justify-between fixed bottom-[100px] pointer-events-none'>
 
-                <Link href={'/global'} className='w-32 h-12 rounded-t-xl bg-teal-600/75 text-white font-semibold flex gap-2 items-center justify-center'>
-                    <LuX className=" h-6 w-6 " />
-                    <p>Discard</p>
+                <Link href={'/global'} className='w-14 h-14 border-b-4 border-dashed border-white/5 rounded-r-xl bg-teal-600/75 text-white font-semibold flex gap-2 items-center justify-center pointer-events-auto'>
+                    <LuX className=" h-8 w-8 " />
                 </Link>
-                <div className="h-12 pb-2 flex flex-col justify-center items-center animate-pulse">
-                    <LuUnfoldVertical className="w-8 h-8 stroke-white/50" />
-                </div>
-                <Link href={'/personal'} className='w-32 h-12 rounded-t-xl bg-teal-600/75 text-white font-semibold flex gap-2 items-center justify-center'>
-                    <p>Confirm</p>
-                    <LuCheck className=" h-6 w-6 " />
+
+                <Link href={'/global'} className='w-14 h-14 border-b-4 border-dashed border-white/5 rounded-l-xl bg-teal-600/75 text-white font-semibold flex gap-2 items-center justify-center pointer-events-auto'>
+                    <LuCheck className=" h-8 w-8" />
                 </Link>
 
             </div>

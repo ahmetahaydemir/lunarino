@@ -77,6 +77,8 @@ export default function Personal() {
         useSensor(MouseSensor)
     );
     //
+    let dataCount = rankings.sorted.length + rankings.unsorted.length;
+    //
     return (
         <div id='personal-container' className=" h-full flex flex-col gap-2 pt-12">
             <DndContext id="personal-dnd"
@@ -87,17 +89,17 @@ export default function Personal() {
                 onDragEnd={handleDragEnd}
             >
 
-                <SortableContainer editable={true} sorted={true} dataArray={rankings.sorted} activeId={activeElement?.id} activeElement={activeElement}></SortableContainer>
+                <SortableContainer editable={true} sorted={true} dataLength={dataCount} dataArray={rankings.sorted} activeId={activeElement?.id} activeElement={activeElement}></SortableContainer>
 
                 <div
-                    className={(rankings.sorted.length > 0 ? 'hidden ' : ' ') + " self-center animate-pulse flex w-8/12 h-[54px] absolute top-12 items-center justify-center gap-4 rounded-xl font-medium bg-black/25"}
+                    className={(rankings.sorted.length > 0 ? 'hidden ' : ' ') + " self-center animate-pulse flex w-10/12 h-[64px] absolute top-10 items-center justify-center gap-4 rounded-xl font-medium bg-black/10 border-4 border-dashed border-black/25"}
                 >
-                    <FaAngleRight className="w-8 h-8 fill-white/25" />
-                    <p className="text-slate-100 text-center text-xl">{"Drop Here"}</p>
-                    <FaAngleLeft className="w-8 h-8 fill-white/25" />
+                    <FaAngleRight className="w-8 h-8 fill-black/25" />
+                    <b className="text-white/50 text-center text-xl tracking-widest">{"Drop Here"}</b>
+                    <FaAngleLeft className="w-8 h-8 fill-black/25" />
                 </div>
 
-                <SortableContainer editable={true} sorted={false} dataArray={rankings.unsorted} activeId={activeElement?.id} activeElement={activeElement}></SortableContainer>
+                <SortableContainer editable={true} sorted={false} dataLength={dataCount} dataArray={rankings.unsorted} activeId={activeElement?.id} activeElement={activeElement}></SortableContainer>
 
                 <DragOverlay
                     dropAnimation={{
