@@ -74,25 +74,17 @@ export default function SortableRanking(props: RankingProp) {
                     className={(props.active ? 'blur-sm' : '') + ' w-full flex justify-center items-center'}
                 >
                     <ul
-                        className={(props.active ? 'opacity-25 ' : 'opacity-100 ') + "ranking flex w-11/12 h-[42px] items-center justify-center gap-2 rounded-md font-medium " + (props.index === "?" ? "cursor-grabbing" : "cursor-grab")}
+                        className={(props.active ? 'opacity-25 ' : 'opacity-100 ') + "ranking flex w-11/12 h-[42px] items-center justify-between rounded-md font-medium " + (props.index === "?" ? "cursor-grabbing" : "cursor-grab")}
                     >
-                        <div className={rankColorStyle + 'flex w-[64px] h-[48px] text-black justify-center text-xl rounded-2xl'}>
-                            <b className="self-center text-center w-full">{props.index}</b>
-                            <PiCaretUpDownBold className={overlayColorStyle + 'w-20 h-20 absolute self-center pointer-events-none'}></PiCaretUpDownBold>
+                        <div className="w-11/12 flex items-center gap-1">
+                            <div className={rankColorStyle + 'flex w-[54px] h-[50px] text-black justify-center text-xl rounded-2xl'}>
+                                <b className="self-center text-center w-full">{props.index}</b>
+                                <PiCaretUpDownBold className={overlayColorStyle + 'w-20 h-20 absolute self-center pointer-events-none'}></PiCaretUpDownBold>
+                            </div>
+                            <FaAngleRight className="w-6 h-6 fill-white/25" />
+                            <p className="w-fit text-slate-100 text-left text-lg">{props.name}</p>
                         </div>
-                        <FaAngleRight className="w-6 h-6 fill-white/25" />
-                        <p className="w-full text-slate-100 text-left text-lg">{props.name}</p>
-                        {
-                            props.editable ?
-                                <div
-                                    className={"w-12 h-12 relative right-1 flex justify-end items-center "}
-                                >
-                                    <MdDragIndicator
-                                        className="w-8 h-8 fill-white/50 animate-pulse" />
-                                </div>
-                                :
-                                ''
-                        }
+                        <MdDragIndicator className="w-8 h-8 fill-white/50 animate-pulse" />
                     </ul>
                 </li>
             )
@@ -118,18 +110,17 @@ export default function SortableRanking(props: RankingProp) {
         return (
             <li ref={setNodeRef}
                 style={style}
-                className={(props.active ? 'blur-sm ' : '') + 'w-full flex justify-center items-center'}
+                className={'w-full flex justify-center items-center'}
             >
                 <Link
                     href={props.href || "/"}
-                    className={(props.active ? 'opacity-25 ' : 'opacity-100') + " ranking flex w-11/12 h-[42px] items-center justify-center gap-2 rounded-md font-medium"}
+                    className={"ranking flex w-11/12 h-[42px] items-center gap-1 rounded-md font-medium"}
                 >
-                    <div className={rankColorStyle + 'flex w-[64px] h-[48px] text-black justify-center text-xl rounded-2xl'}>
-                        <b className="self-center">{props.index}</b>
-                        <PiCaretUpDownBold className={overlayColorStyle + 'w-20 h-20 relative self-center pointer-events-none'}></PiCaretUpDownBold>
+                    <div className={rankColorStyle + 'flex w-[54px] h-[50px] text-black justify-center rounded-2xl'}>
+                        <b className="self-center text-center text-xl w-full">{props.index}</b>
                     </div>
                     <FaAngleRight className="w-6 h-6 fill-white/25" />
-                    <p className="w-full text-slate-100 text-lg">{props.name}</p>
+                    <p className="w-fit text-slate-100 text-left text-lg">{props.name}</p>
                 </Link>
             </li>
         )
